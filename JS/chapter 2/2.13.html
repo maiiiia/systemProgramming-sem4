@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title> task 2.13</title>
+    <script language="JavaScript">
+    var k=1
+
+    function numday(obj)
+    {
+    var m = Number(obj.num1.value)
+    d=document
+    var s
+    switch(m)
+    { case 1: s='mon'; break;
+    case 2: s='tue'; break;
+    case 3: s='wed'; break;
+    case 4: s='thu'; break;
+    case 5: s='fri'; break;
+    case 6: s='sat'; break;
+    case 7: s='sun'; break;
+    default: s='error';
+    }
+    obj.res.value=s
+    }
+
+
+    </script>
+</head>
+<body>
+
+<form name="form1">
+    enter day number <input type="text" size="7" name="num1">
+    <hr>
+    day name
+    <input type="button" value="calculate" onclick="numday(form1)">
+    <input type="text" name="res" size="20">
+    <hr>
+    <input type="reset">
+
+</form>
+
+
+</body>
+</html>
