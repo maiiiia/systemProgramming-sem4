@@ -1,0 +1,78 @@
+<HTML>
+<HEAD>
+    <TITLE>Построение формулы в обратной польской записи</TITLE>
+    <script>
+        var s
+        var st
+        var i
+        var er
+        var с
+        function main(obj) {
+            s = ""
+            st = obj.f1.value
+            i = -1
+            er = false
+            c = cursym()
+            postform()
+            if (er)
+                alert("Ошибка при задании формулы", "<br>")
+            else {
+                form1.fres.value = s
+            }
+        }
+        
+        function cursym() {
+            i=i+1
+            return st.charAt(i);
+        }
+
+        function wrsym(h) {
+            s += h
+        }
+        function postform() {
+            postterm()
+            while ((c == "+") || (c == "-")) {
+                var h = c
+                c = cursym()
+                postterm()
+                wrsym(h)
+            }
+        }
+        function postterm() {
+            postmn()
+            while ((c == "*") || (c == "/")) {
+                var h = c
+                c = cursym()
+                postmn()
+                wrsym(h)
+            }
+        }
+        function postmn() {
+            if ((c >= "a") && (c <= "z")) {
+                wrsym(c)
+                c = cursym();
+            }
+            else {
+                if (c == "(") {
+                    c = cursym()
+                    postform()
+                    if (c != ")") er = true
+                    else c = cursym()
+                }
+                else er = true
+            }
+        }
+    </script>
+</HEAD>
+<BODY>
+    <H4>Построение обратной польской записи методом
+        рекурсивного спуска</H4>
+    <FORM name="form1">
+        Введите формулу: <input type="text" size=25 name="f1"><HR>
+        Формула в постфиксной нотации: <input type="text" size=25
+                                              name="fres"><HR>
+        <input type="button" value=Выполнить onClick="main(form1)">
+        <input type="reset" value=Очистить><HR>
+    </FORM>
+</BODY>
+</HTML>

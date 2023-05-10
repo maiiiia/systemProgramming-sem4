@@ -1,0 +1,86 @@
+<HTML>
+<HEAD>
+    <TITLE>формулы вида al?a2?a3?…?an=b</TITLE>
+    <script language="JavaScript">
+        var sres = ""
+        var k
+        var b
+        var v = new Array(1,2,3,4,5,6,7,8,9,10)
+        var n = v.length
+        var varsh = 0
+        function Vform() {
+            var s = Number(v[0])
+            for (var i = 0; i <= n - 2; i++)
+                switch (z[i]) {
+                    case "+": s += Number(v[i + 1]); break
+                    case "-": s -= Number(v[i + 1]); break
+                }
+            return s
+        }
+        function WriteForm() {
+            var str = v[0]
+            for (var i = 0; i <= n - 2; i++)
+                switch (z[i]) {
+                    case "+": str += "+" + v[i + 1]; break
+                    case "-": str += "-" + v[i + 1]; break
+                }
+            str += "=" + b + "\r\n"
+            return str
+        }
+        function NewSign() {
+            var i = n - 2
+            while (i >= 0) {
+                if (z[i] == "+") {
+                    z[i] = "-"
+                    i--
+                }
+                else {
+                    z[i] = "+"; break
+                }
+            }
+        }
+        function InitSign() {
+            for (var i = 0; i <= n - 2; i++) {
+                z[i] = "-"
+            }
+        }
+        function formula(obj) {
+            b = obj.valform.value
+            if (b == "")
+                alert("Вы не ввели значение формулы")
+            else {
+                k = Math.pow(2, n - 1)
+                sres = ""
+                varsh = 0
+                InitSign()
+                for (var t = 1; t <= k; t++) {
+                    if (Vform() == Number(b)) {
+                        sres += WriteForm()
+                        varsh++
+                    }
+                    NewSign()
+                }
+                if (varsh == 0)   sres = "таких формул нет"
+                obj.result.value = sres
+                obj.data1.value = varsh
+            }
+        }
+        function writearr(obj) {
+            obj.vararray.value = v
+        }
+    </script>
+</HEAD>
+<BODY bgcolor=silver>
+    <H4>Формулы вида a1?a2?a3?…?an=b</H4>
+    <FORM name="form1">
+        <input type="button" value=Macсив onClick="writearr (form1)">
+        Значения элементов: <input type="text" size=20 name="vararray">
+        Значение формулы: <input type="text" size=20 name="valform"><BR>
+        <input type="button" value=Определить onClick="formula(form1)">
+        Количество формул: <input type="text" size=20 name="data1">
+        Найденные формулы:
+        <textarea cols=30 rows=3 name="result"> </textarea>
+        <input type="reset" value=Отменить onClick='sres=""; varsh=0'>
+    </FORM>
+</BODY>
+</HTML>

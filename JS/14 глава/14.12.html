@@ -1,0 +1,47 @@
+<html>
+<head>
+    <title>Удаление элемента из упорядоченного массива</title>
+    <script>
+        var v = new Array(4, 5, 15, 17, 31, 52, 72, 79, 81, 83, 89, 91, 93, 94, 98)
+        function test(obj) {
+            obj.data1.value = v
+        }
+        function binsear(v, t) {
+            var i = 0
+            var j = v.length - 1
+            var k
+            while (i < j) {
+                k = Math.round((i + j) / 2 + 0.5) - 1
+                if (t <= v[k])
+                    j = k
+                else
+                    i = k + 1
+            }
+            if (v[i] == t) { return i }
+            else return -1
+        }
+        function delar(v, t) {
+            var n = v.length
+            var k = binsear(v, t)
+            if (k != -1) {
+                for (var i = k; i <= n - 1; i++)
+                    v[i] = v[i + 1]
+                v.length = n - 1
+            }
+            document.form1.result.value = v
+            return v
+        }
+    </script>
+</head>
+<BODY>
+    <H4>Удаление элемента из упорядоченного массива</H4>
+    <form name="form1">
+        Массив: <INPUT type="text" size=40 name="data1"><hr>
+        Элемент: <INPUT type="text" size=20 name="data2"><hr>
+        Результат поиска: <INPUT type="text" size=40 name="result"><hr>
+        <input type="button" value=Определить
+               onClick="test(form1); form1.result.value=delar(v, Number(form1.data2.value))">
+        <input type="reset" value=Отменить>
+    </form>
+</BODY>
+</html>

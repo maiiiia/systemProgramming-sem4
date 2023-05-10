@@ -1,0 +1,63 @@
+<html>
+<head>
+    <title>swap three images</title>
+    <script>
+        function ch3pict() {
+            var d = document
+            var a = d.form1.num1.value
+            var b = d.form1.num2.value
+            var l 
+            if (a < 1 || a > 3 || b < 1 || b > 3)
+                alert("wrong parameters")
+            else {
+                if (a == 1) {
+                    l = d.pm1.src
+                    if (b == 2) {
+                        d.pm1.src = d.pm2.src
+                        d.pm2.src = l
+                    }
+                    else if (b == 3) {
+                        d.pm1.src = d.pm3.src
+                        d.pm3.src = l
+                    }
+                }
+                else if (a == 2) {
+                    l = d.pm2.src
+                    if (b == 1) {
+                        d.pm2.src = d.pm1.src
+                        d.pm1.src = l
+                    }
+                    else if (b == 3) {
+                        d.pm2.src = d.pm3.src
+                        d.pm3.src = l
+                    }
+                }
+                else if (a == 3) {
+                    l = d.pm3.src
+                    if (b == 1) {
+                        d.pm3.src = d.pm1.src
+                        d.pm1.src = l
+                    }
+                    else if (b == 2) {
+                        d.pm3.src = d.pm2.src
+                        d.pm2.src = l
+                    }
+                }
+            }
+        }
+    </script>
+</head>
+<body>
+    <center>
+        <h4>swap three images</h4>
+        <img src="epsilon.jpg" name="pm1" width="300" />
+        <img src="omega.jpg" name="pm2" width="300" />
+        <img src="psi.jpg" name="pm3" width="300" />
+        <form name="form1">
+            <input type="text" size="3" name="num1" /> and
+            <input type="text" size="3" name="num2" />
+            <input type="button" value="swap" onclick="ch3pict(form1)" />
+        </form>
+    </center>
+</body>
+</html>

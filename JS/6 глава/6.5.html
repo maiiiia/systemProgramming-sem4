@@ -1,0 +1,67 @@
+<html>
+<head>
+    <title>Данные, представленные списком</title>
+    <script>
+        var n = 0
+        function test(obj) {
+            if (n <= (obj.elements[2]).length - 1) {
+                if (((obj.elements[0])[0]).selected) {
+                    ((obj.elements[2])[n]).text = n + 1 + ". " +
+                        ((obj.elements[0])[0]).text + " "
+                    n++
+                }
+                if (((obj.elements[0])[1]).selected) {
+                    ((obj.elements[2])[n]).text = n + 1 + ". " +
+                        ((obj.elements[0])[1]).text + " "
+                    n++
+                }
+                if (((obj.elements[0])[2]).selected) {
+                    ((obj.elements[2])[n]).text = n + 1 + ". " +
+                        ((obj.elements[0])[2]).text + " "
+                    n++
+                }
+                if (((obj.elements[0])[3]).selected) {
+                    ((obj.elements[2])[n]).text = n + 1 + ". " +
+                        ((obj.elements[0])[3]).text + " "
+                    n++
+                }
+                if (((obj.elements[0])[4]).selected) {
+                    ((obj.elements[2])[n]).text = n + 1 + ". " +
+                        ((obj.elements[0])[4]).text + " "
+                    n++
+                }
+                if (((obj.elements[0])[5]).selected) {
+                    ((obj.elements[2])[n]).text = n + 1 + ". " +
+                        ((obj.elements[0])[5]).text + " "
+                    n++
+                }
+            }
+            else alert("Ваш выбор содержит ошибку")
+        }
+    </script>
+</head>
+<body>
+    <form name="form1">
+        <h3>Анкета читателя</h3>
+        <p>Пречислите в порядке важности следующие шесть характеристик книг</p>
+        <select name="forma" size="7" multiple>
+            <option value="обложка">Оформление обложки</option>
+            <option value="объем">Объем книги</option>
+            <option value="цена">Цена книги</option>
+            <option value="качество бумаги">Качество бумаги</option>
+            <option value="иллюстрации">Наличие цветных иллюстраций</option>
+            <option value="диски">Наличие CD или дискет</option>
+        </select><p>
+        <input type="button" value="Добавить"
+                   onclick="test(form1)" />
+        <select name="formres" size="7" multiple>
+            <option value="n1"></option>
+            <option value="n2"></option>
+            <option value="n3"></option>
+            <option value="n4"></option>
+            <option value="n5"></option>
+            <option value="n6"></option>
+        </select>
+    </form>
+</body>
+</html>

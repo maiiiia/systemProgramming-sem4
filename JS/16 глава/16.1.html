@@ -1,0 +1,26 @@
+<HTML>
+<HEAD>
+    <TITLE>Рекурсивные методы. Двоичное представление числа</TITLE>
+    <script>
+        function recbin(n) {
+            var s
+            if (n == 1) s = "1"
+            else {
+                s = recbin((n - n % 2) / 2)
+                s += n % 2
+            }
+                return s
+            }
+    </script>
+</HEAD>
+<BODY>
+    <H4> Рекурсивные методы. Двоичное представление числа</H4>
+    <FORM name="form1">
+Введите натуральное число: <input type="text" size=12 name="num">
+Двоичное представление: <input type="text" size=12 name="res">
+        <input type="button" value=Выполнить
+               onClick="this.form.res.value=recbin(Number(this.form.num.value))">
+        <input type="reset" value=Отменить>
+    </FORM>
+</BODY>
+</HTML>

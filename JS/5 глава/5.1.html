@@ -1,0 +1,56 @@
+<html>
+<head>
+    <title>Анкета читателя</title>
+    <script>
+        var s = "Вас привлекает: \r\n"
+        function set(vch) {
+            s = s + vch + "\r\n"
+            document.form1.area.value = s
+        }
+    </script>
+</head>
+<body>
+    <center>
+        <h3 align="center">Анкета читателя</h3>
+        <form name="form0">
+            <h4>Введите название любимого журнала или газеты</h4>
+            <input type="text" name="n1" size="45" /><br />
+        </form>
+        <form name="form1">
+            <h4>Что вас привлекает в издании?</h4>
+            <table border="3" align="center">
+                <tr>
+                    <td>
+                        <input type="checkbox" name="m1"
+                               value="Стиль подачи материала"
+                               onclick="set(form1.elements[0].value)" />
+                        Стиль подачи материала <br />
+                        <input type="checkbox" name="m2"
+                               value="Достоверность информации"
+                               onclick="set(form1.elements[1].value)" />
+                        Достоверность информации <br />
+                        <input type="checkbox" name="m3"
+                               value="Дизайн и оформление"
+                               onclick="set(form1.elements[2].value)" />
+                        Дизайн и оформление <br />
+                        <input type="checkbox" name="m4"
+                               value="Качество информации"
+                               onclick="set(form1.elements[3].value)" />
+                        Качество информации <br />
+                        <input type="checkbox" name="m5"
+                               value="Репутация издания"
+                               onclick="set(form1.elements[4].value)" />
+                        Репутация издания <br />
+                        <input type="checkbox" name="m6"
+                               value="Регулярность издания"
+                               onclick="set(form1.elements[5].value)" />
+                        Регулярность издания <br />
+                    </td>
+                </tr>
+            </table>
+            <textarea name="area" cols="35" rows="7"></textarea><br />
+            <input type="reset" value="Отмена" onclick="s = 'Вас привлекает: \r\n'" />
+        </form>
+    </center>
+</body>
+</html>

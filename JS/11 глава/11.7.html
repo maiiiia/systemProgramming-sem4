@@ -1,0 +1,134 @@
+<HTML>
+<HEAD>
+    <TITLE>–асписание зан€тий</TITLE>
+    <script>
+        function ident(mont) {
+            var s
+            switch (mont) {
+                case 0: s = "€нварь"; break;
+                case 1: s = "февраль"; break;
+                case 2: s = "март"; break;
+                case 3: s = "апрель"; break;
+                case 4: s = "май"; break;
+                case 5: s = "июнь"; break;
+                case 6: s = "июль"; break;
+                case 7: s = "август"; break;
+                case 8: s = "сент€брь"; break;
+                case 9: s = "окт€брь"; break;
+                case 10: s = "но€брь"; break;
+                case 11: s = "декабрь"; break;
+            }
+            return s
+        }
+        function rasp(obj) {
+            var d = new Date(obj.begy.value, obj.begm.value, obj.begd.value)
+            var w = new Date(obj.endy.value, obj.endm.value, obj.endd.value)
+            var t = new Date(obj.begy.value, obj.begm.value, obj.begd.value)
+            var s = ""
+            var n = obj.dt.value
+            var k = d.getDate() + Number(n) - Number(d.getDay())
+            if (n < d.getDay()) k += 7
+            t.setDate(k)
+            var s1 = "ƒни зан€тий: " + "\n"
+            var scur
+            var s = s1
+            while (t.getYear() <= w.getYear()) {
+                scur =+ t.getDate() + " " + ident(Number(t.getMonth())) +
+                    " " + t.getFullYear() + "\n"
+                if (t.getYear() < w.getYear()) s += scur
+                else 
+                    if (t.getMonth() < w.getMonth()) s += scur
+                    else 
+                        if (t.getMonth() == w.getMonth())
+                            if (t.getDate() < w.getDate()) s += scur
+                            else
+                                if (t.getDate() == w.getDate()) {
+                                    s += scur                            
+                                    break                                
+                                }
+                k = t.getDate() + 7
+                t.setDate(k)
+            }
+            if (s == s1) alert("ѕроверьте даты начала и конца зан€тий")
+            else obj.res.value = s
+        }           
+    </script>
+</HEAD>
+<BODY bgcolor-"#FFFFCC">
+    <h4 align=center>‘ормирование расписани€ зан€тий</h4>
+    <FORM name="form1">
+        <TABLE border=3 align=center>
+            <TR>
+                <th>Ќачало курсов</th>
+                <th> онец курсов</th>
+                <th>–асписание</th>
+            </TR>
+            <TR>
+                <TD>
+                    число <input type="text" name="begd" size=10>
+                    мес€ц <select name="begm" size=1>
+                        <option value=0>€нварь
+                        <option value=1>февраль
+                        <option value=2>март
+                        <option value=3>апрель
+                        <option value=4>май
+                        <option value=5>июнь
+                        <option value=6>июль
+                        <option value=7>август
+                        <option value=8>сент€брь
+                        <option value=9>окт€брь
+                        <option value=10>но€брь
+                        <option value=11>декабрь
+                    </select>
+                    год <input type-"text" name="begy" size=10 value=2023>
+                </TD>
+                <TD>
+                    число <input type="text" name="endd" size=10>
+                    мес€ц <select name="endm" size=1>
+                        <option value=0>€нварь
+                        <option value=1>февраль
+                        <option value=2>март
+                        <option value=3>апрель
+                        <option value=4>май
+                        <option value=5>июнь
+                        <option value=6>июль
+                        <option value=7>август
+                        <option value=8>сент€брь
+                        <option value=9>окт€брь
+                        <option value=10>но€брь
+                        <option value=11>декабрь
+                    </select>
+                    год <input type="text" name="endy" size=8 value=2023>
+                </TD>
+                <TD rowspan=2>
+                    <textarea cols=20 rows=8 name=res></textarea><br>
+                </TD>
+            </TR>
+            <TR>
+                <TD colspan=2 align=right>
+                    ¬ыберите день зан€тий:
+                    <select name=dt size=1>
+                        <option value=0>воскресенье
+                        <option value=1>понедельник
+                        <option value=2>вторник
+                        <option value=3>среда
+                        <option value=4>четверг
+                        <option value=5>п€тница
+                        <option value=6>суббота
+                    </select>
+                </TD>
+            </TR>
+            <TR>
+                <TD colspan=2 align=left>
+                    <br>
+                    <input type="button" value=—формировать
+                           onClick="rasp(form1)"><br>
+                </TD>
+                <TD align=right>
+                    <input type="reset" value=ќтменить>
+                </TD>
+            </TR>
+        </TABLE><br />
+    </FORM>
+</BODY>
+</HTML>

@@ -1,0 +1,31 @@
+<html>
+<head>
+    <title>exploring features of an image</title>
+    <script>
+        function chpict(obj) {
+            var w = obj.wd.value
+            var h = obj.hg.value
+            if (w != 0) document.mypict.width = w
+            if (h != 0) document.mypict.height = h
+            document.mypict.border = obj.br.value
+            document.mypict.alt = obj.al.value
+        }
+    </script>
+</head>
+<body>
+    <center>
+        <h3>embedded images</h3>
+        <img src="p1.jpg" name="mypict" width="500"/>
+        <form name="form1">
+            to change the size of an image enter 1 or 2 parameters and press <b> change</b><br />
+            width: <input type="text" name="wd" size="8" /><br />
+            height: <input type="text" name="hg" size="8" /><br />
+            to create a frame for an image, enter width of the frame in pixels <b> create</b><br />
+            width : <input type="text" name="br" size="8" value="0" /><br />
+            alternative text: <input type="text" name="al" size="40" /><br />
+            <input type="button" value="change" onclick="chpict(form1)" />
+            <input type="reset" value="reset" />
+        </form>
+    </center>
+</body>
+</html>

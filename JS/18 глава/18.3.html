@@ -1,0 +1,87 @@
+<HTML>
+<HEAD>
+    <TITLE>Задача вычисления значения формулы</TITLE>
+    <script>
+        var st
+        var i
+        var er
+        var c
+        function cursym() {
+            i = i + 1
+            return st.charAt(i)
+        }
+        function valform() {
+            var t1 = valterm()
+            var t2
+            while ((c == "+") || (c == "-")) {
+                var h = c
+                C = cursym()
+                t2 = valterm()
+                if (h == "+") t1 = t1 + t2
+                else t1 = t1 - t2
+            }
+            return Number(t1)
+        }
+        function valterm() {
+            var t1 = valmn()
+            var t2
+            while (c == "*") {
+                var h = c
+                c = cursym()
+                t2 = valmn()
+                t1 = t1 * t2
+            }
+            return Number(t1)
+        }
+        function valmn() {
+            if ((c >= "1") && (c <= "9")) {
+                var h = Number(c)
+                c = cursym()
+                return Number(h)
+            }
+            else {
+                if (c == " (") {
+                    c = cursym()
+                    var t = valform()
+                    if (c != ")")
+                        er = true
+                    else {
+                        c = cursym()
+                        return Number(t)
+                    }
+                }
+                else er = true
+            }
+        }
+        function main(obj) {
+            st = obj.f1.value
+            i = -1
+            er = false
+            c = cursym()
+            r = valform()
+            if (er || (i != st.length))
+                alert("Ошибка при задании формулы", "<br>")
+            else obj.fres.value = r
+        }
+        function testval(obj) {
+            st = obj.f1.value
+            r = eval(st)
+            obj.test.value = r
+            if (er)
+                alert("Ошибка при задании формулы", "<br>")
+            else obj.test.value = r
+        }
+    </script>
+</HEAD>
+<BODY>
+    <P>Вычисление значения формулы методом рекурсивного спуска</P>
+    <FORM name="form1">
+        Введите формулу: <input type="text" size=30 name="f1"><HR>
+        Значение формулы: <input type="text" size=30 name="fres"><HR>
+        <input type="button" value=Выполнить onClick="main(form1)"><HR>
+        Функция eval: <input type="text" size=30 name="test"><HR>
+        <input type="button" value=Проверка onClick="testval(form1) "><HR>
+        <input type="reset" value=Очистить><HR>
+    </FORM>
+</BODY>
+</HTML>

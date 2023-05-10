@@ -1,0 +1,44 @@
+<html>
+    <head>
+        <title>
+            Латинский квадрат
+        </title>
+        <script>
+        function solvetab()
+        {
+            var n = Number(document.forms['form1'].num.value);
+            var k 
+            if(n%2==0)
+                k=Number(n/2)
+            else
+                k=Number((n+1)/2);
+            var out = top.frames['bottom'].document;
+            out.close();
+            out.open();
+            out.writeln('<body bgcolor="silver"><center>');
+            out.writeln('<table bgcolor=white COLS='+n+' ROWS='+n+' border=3>');
+            for(i=0;i<n;i++)
+            {
+                out.writeln('<TR>');
+                    for(j=0;j<n;j++)
+                    {
+                        out.writeln('<TD> '+ Math.round(Number((j+k-i+3*n-1)%n+1))+' ');
+                        out.writeln('</TR>');   
+                    }
+                out.write('</table>');
+                out.writeln('</center><body>');
+            }
+        }
+        </script>
+    </head>
+    <body>
+        Задание на построение латинского квадрата<br>
+        В квадрате размером NxN в каждой из клеток требуется поставить
+        одно из чисел 1,2,...., N так, чтобы сумма чисел в любой строке
+        столбце и диагонали равнялась одному и тому же числу 1+2+...+N<br>
+        <form name="form1">
+            Введите N <input name="num" type="text" size="4">
+            <input type="button" onclick="solvetab()" value="OK">
+        </form>
+    </body>
+    </html>

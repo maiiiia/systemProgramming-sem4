@@ -1,0 +1,116 @@
+<html>
+<head>
+    <title>Анкета "Преподаватель и студент"</title>
+    <script>
+        var p = ""
+        var s = ""
+        function gr(obj, m) {
+            p = ((obj.elements[3])[m]).text
+        }
+        function statist(obj) {
+            var res = 0
+            if (obj[0].checked) res += 1
+            if (obj[1].checked) res += 2
+            if (obj[2].checked) res += 3
+            if (obj[3].checked) res += 4
+            if (obj[4].checked) res += 5
+            return res
+        }
+        function stat(obj) {
+            s += p + ": " + Number(statist(obj.part1) + statist(obj.part2) +
+                statist(obj.part3) + statist(obj.part4) + statist(obj.part5)) + "\r\n"
+            obj.result.value = s
+        }
+    </script>
+</head>
+<body>
+    <center>
+        <h4 align="center">Информация о студенте</h4>
+        <form name="form1">
+            Факультет 
+            <select name="faculty" size="1" maxlength="20">
+                <option value="mm">Мат-Мех</option>
+                <option value="ph">Физфак</option>
+                <option value="ch">Химфак</option>
+            </select>
+            Курс 
+            <select name="k" size="1" maxlength="1">
+                <option value="1">1</option>
+                <option value="2">2</option>
+                <option value="3">3</option>
+                <option value="4">4</option>
+                <option value="5">5</option>
+            </select>
+            Группа <input type="text" name="group" size="4" />
+            <table border="3">
+                <tr>
+                    <td valign="top">
+                        <h4>Список преподавателей:</h4>
+                        <select name="teacher" size="1" col="50"
+                                onclick="gr(form1, form1.teacher.value)">
+                            <option value="0">Иванова Марина Валерьевна</option>
+                            <option value="1">Петрова Анна Сергеевна</option>
+                            <option value="2">Сергеева Ольга Владимировна</option>
+                            <option value="3">Лебедев Сергей Сергеевич</option>
+                            <option value="4">Краснов Николай Маркович</option>
+                            <option value="5">Клюев Александр Иванович</option>
+                            <option value="6">Цветков Леонид Евгеньевич</option>
+                        </select>
+                    </td>
+                    <td>
+                        <table border="2" align="center" bgcolor="#a21212">
+                            <tr>
+                                <th align="center"> Показатель </th>
+                                <th colspan="5" align="center"> Оценка </th>
+                            </tr>
+                            <tr>
+                                <td>Соответствие программе</td>
+                                <td><input type="radio" name="part1" value="1" />1</td>
+                                <td><input type="radio" name="part1" value="2" />2</td>
+                                <td><input type="radio" name="part1" value="3" />3</td>
+                                <td><input type="radio" name="part1" value="4" />4</td>
+                                <td><input type="radio" name="part1" value="5" />5</td>
+                            </tr>
+                            <tr>
+                                <td>Учет специфики аудитории</td>
+                                <td><input type="radio" name="part2" value="1" />1</td>
+                                <td><input type="radio" name="part2" value="2" />2</td>
+                                <td><input type="radio" name="part2" value="3" />3</td>
+                                <td><input type="radio" name="part2" value="4" />4</td>
+                                <td><input type="radio" name="part2" value="5" />5</td>
+                            </tr>
+                            <tr>
+                                <td>Доказательность изложения</td>
+                                <td><input type="radio" name="part3" value="1" />1</td>
+                                <td><input type="radio" name="part3" value="2" />2</td>
+                                <td><input type="radio" name="part3" value="3" />3</td>
+                                <td><input type="radio" name="part3" value="4" />4</td>
+                                <td><input type="radio" name="part3" value="5" />5</td>
+                            </tr>
+                            <tr>
+                                <td>Эффективные методы обучения</td>
+                                <td><input type="radio" name="part4" value="1" />1</td>
+                                <td><input type="radio" name="part4" value="2" />2</td>
+                                <td><input type="radio" name="part4" value="3" />3</td>
+                                <td><input type="radio" name="part4" value="4" />4</td>
+                                <td><input type="radio" name="part4" value="5" />5</td>
+                            </tr>
+                            <tr>
+                                <td>Современный уровень</td>
+                                <td><input type="radio" name="part5" value="1" />1</td>
+                                <td><input type="radio" name="part5" value="2" />2</td>
+                                <td><input type="radio" name="part5" value="3" />3</td>
+                                <td><input type="radio" name="part5" value="4" />4</td>
+                                <td><input type="radio" name="part5" value="5" />5</td>
+                            </tr>
+                        </table>
+                    </td>
+                </tr>
+            </table><p>
+            <input type="button" value="Статистика" onclick="stat(form1)" /><p>
+            <textarea cols="40" rows="5" name="result"></textarea><p>
+            <input type="reset" value="Очистить" onclick="p = ''; s=''" />
+        </form>
+        </center>
+</body>
+</html>

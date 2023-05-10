@@ -1,0 +1,22 @@
+<HTML>
+<HEAD>
+    <TITLE>Вычисление факториала</TITLE>
+    <script>
+        function fact1(obj) {
+            n = obj.num.value
+            var f = 1
+            for (var i = 2; i <= n; i++) { f = f * i }
+            obj.res.value = f
+        }
+</script>
+</HEAD>
+<BODY>
+    <P> Итерационные методы. Вычисление факториала</P>
+    <FORM name="form1">
+        Введите натуральное: <input type="text" size=8 name="num">
+        Вычисленное значение: <input type="text" size=8 name="res"><hr>
+        <input type="button" value=Выполнить onClick="fact1(form1)"><hr>
+        <input type="reset" value=Отменить>
+    </FORM>
+</BODY>
+</HTML>

@@ -1,0 +1,34 @@
+<HTML>
+<HEAD>
+    <TITLE>
+        Нахождение корня уравнения вида x = f(x)
+        методом итераций
+    </TITLE>
+    <script>
+        function iter(obj) {
+            var d = document
+            var fs = obj.func.value
+            var t = Number(obj.tv.value)
+            var eps = Number(obj.epsv.value)
+            var x = t
+            var y = eval(fs)
+            while (Math.abs(y - x) >= eps) {
+                x = y
+                y = eval(fs)
+            }
+            obj.res.value = x
+        }
+    </script>
+</HEAD>
+<BODY bgcolor="F8F8FF">
+    <H4>Нахождение корня уравнения вида x = f(x) методом итераций</H4>
+    <FORM name="form1">
+        Введите функцию f(x): <input type="text" size=20 name="func"><hr>
+        Введите начальное приближение: <input type="text" size=8 name="tv"><hr>
+        Введите требуемую точность:<input type="text" size=8 name="epsv"><hr>
+        <input type="button" value=Вычислить onClick="iter(form1)"><hr>
+        Корень уравнения равен: <input type="text" size=20 name="res"><hr>
+        <input type="reset" value=Отменить>
+    </FORM>
+</BODY>
+</HTML>

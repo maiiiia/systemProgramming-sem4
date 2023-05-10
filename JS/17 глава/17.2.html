@@ -1,0 +1,68 @@
+<HTML>
+<HEAD>
+    <TITLE>Hахождение формул вида а?(b?(с?(d?(е?f)))) </TITLE>
+    <script>
+        function formula(obj) {
+            var a = Number(obj.data1.value)
+            var b = Number(obj.data2.value)
+            var c = Number(obj.data3.value)
+            var d = Number(obj.data4.value)
+            var e = Number(obj.data5.value)
+            var f = Number(obj.data6.value)
+            var g = Number(obj.data7.value)
+            var s = new Array(a, "+", "(", b, "+", "(", c, "+", "(", d, "+", "(", e, "+", f, ")", ")", ")", ")")
+            var op = new Array("+", "-", "*", "%")
+            var str = ""
+            var sres = ""
+            var str
+            var p = false
+            for (var i = 0; i <= 3; i++) {
+                s[1] = op[i];
+                for (var j = 0; j <= 3; j++) {
+                    s[4] = op[j];
+                    for (var k = 0; k <= 3; k++) {
+                        s[7] = op[k];
+                        for (var m = 0; m <= 3; m++) {
+                            s[10] = op[m];
+                            for (var n = 0; n <= 3; n++) {
+                                s[13] = op[n]
+                                str = ""
+                                for (var t = 0; t <= s.length - 1; t++) {
+                                    str += s[t]
+                                }
+                                r = eval(str)
+                                if (r == g) {
+                                    sres += str + "=" + g + "\r\n"
+                                    p = true
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+
+            if (p)
+                obj.result.value = sres
+            else
+                obj.result.value = "Формул, удовлетворяющих условию, не найдено."
+        }
+    </script>
+</HEAD>
+<BODY bgcolor=silver>
+    <H4>Нахождение формул вида а?(b?(с?(d?(e?f))))</H4>
+    <FORM name="form1">
+        a: <INpUT type="text" size=20 name="data1"><br />
+        b: <INPUT type="text" size=20 name="data2"><br />
+        c: <INpUT type="text" Size=20 name="data3"><br />
+        d: <INPUT type="text" size=20 name="data4"><br />
+        e: <INPUT type="text" size=20 name="data5"><br />
+        f: <INPUT type="text" size=20 name="data6"><br />
+        g: <INpUT type="text" size=20 name="data7"><br />
+        Найденные формулы:
+        <textarea cols=30 rows=5 name="result"> </textarea>
+        <HR>
+        <INPUT type="button" value=Определить onClick="formula(form1)">
+        <INPUT type="reset" value=Отменить>
+    </FORM>
+</BODY>
+</HTML>

@@ -1,0 +1,33 @@
+<html>
+<head>
+    <title>Исследование свойств изображения</title>
+    <script>
+        function chpict() {
+            var w = document.forms[0].elements[0].value
+            var h = document.forms[0].elements[1].value
+            if (w != 0) document.images[0].width = w
+            if (h != 0) document.images[0].height = h
+            document.images[0].border = document.forms[0].elements[2].value
+            document.images[0].alt = document.forms[0].elements[3].value
+        }
+    </script>
+</head>
+<body>
+    <center>
+        <h3>Встраиваемые изображения</h3>
+        <img src="p1.jpg" />
+        <form>
+            Для изменения размера изображения введите значения 
+            одного или двух параметров и нажмите кнопку <b> Просмотр</b><br />
+            ширина: <input type="text" size="8" /><br />
+            высота: <input type="text" size="8" /><br />
+            Чтобы задать рамку введите число = 
+            ширине рамке в пикселях и нажмите кнопку <b>Просмотр</b><br />
+            Ширина рамки: <input type="text" size="8" value="0" /><br />
+            Альтернативный текст: <input type="text" size="40" /><br />
+            <input type="button" value="Просмотр" onclick="chpict()" />
+            <input type="reset" value="Отменить" />
+        </form>
+    </center>
+</body>
+</html>

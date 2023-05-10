@@ -1,0 +1,63 @@
+<html>
+<head>
+    <title>–асположение изображени€ относительно строки</title>
+    <script>
+            var s1 = "¬ерхн€€ граница изображни€ выравниваетс€ " + 
+                "по самому высокому элементу текущей строки"
+            var s2 = "¬ерхн€€ граница изображни€ выравниваетс€ " +
+                "по самому высокому текстовому элементу текущей строки"
+            var s3 = "¬ыравнивание середины изображени€ " +
+                "по базовой линии текущей строки"
+            var s4 = "¬ыравнивание середины изображени€ " +
+                "по середине текущей строки"
+            var s5 = "¬ыравнивание нижней границы изображени€ по базовой линии " +
+                "текущий строки"
+            var s6 = "¬ыравнивание нижней границы изображени€ " +
+                "по нижней границе текущей строки"
+            var s = ""
+            function set(obj) {
+                switch (Number(obj.value)) {
+                    case 0: s = s1; break;
+                    case 1: s = s2; break;
+                    case 2: s = s3; break;
+                    case 3: s = s4; break;
+                    case 4: s = s5; break;
+                    case 5: s = s6; break;
+                }
+                obj.form.elements[6].value = s
+            }
+    </script>
+</head>
+<body>
+        <h3 align="center">–асположение изображени€ относительно строки</h3>
+        ¬ыберите значение параметра, который ¬ас интересует
+        <table border="2">
+            <tr><td align="center"><h4>«начени€ параметра выравнивани€ align</h4></td>
+                <td align="center"><h4>ƒействи€ при выбранном значении параметра</h4></td>                
+            </tr>
+            <tr>
+                <td>
+                    <form name="form1">
+                        <input type="radio" name="ln" value="0"
+                               onfocus="set(form1.elements[0])" />TOP<br />
+                        <input type="radio" name="ln" value="1"
+                               onfocus="set(form1.elements[1])" />TEXTTOP<br />
+                        <input type="radio" name="ln" value="2"
+                               onfocus="set(form1.elements[2])" />MIDDLE<br />
+                        <input type="radio" name="ln" value="3"
+                               onfocus="set(form1.elements[3])" />ABSMIDDLE<br />
+                        <input type="radio" name="ln" value="4"
+                               onfocus="set(form1.elements[4])" />BOTTOM или BASELINE<br />
+                        <input type="radio" name="ln" value="5"
+                               onfocus="set(form1.elements[5])" />ABSBOTTOM<br />
+                    <form name="form1">
+                </td>
+                <td align="center"><textarea name="res" cols="30" rows="4">
+                ¬ерхн€€ граница изображени€ выравниваетс€ по самому высокому 
+                элементу текущей строки</textarea><br />
+                </td>
+            </tr>
+        </table>
+        <input type="reset" value="ќбновить" /><hr />
+</body>
+</html>

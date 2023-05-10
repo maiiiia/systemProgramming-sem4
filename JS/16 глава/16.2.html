@@ -1,0 +1,23 @@
+<HTML>
+<HEAD>
+    <TITLE>Рекурсивные методы. Вычисление факториала</TITLE>
+    <script>
+        function fact(n) {
+            var f = 1
+            if (n == 1) f = 1
+            else f = n * fact(n - 1)
+            return f
+        }
+    </script>
+</HEAD>
+<BODY>
+    <H4> Рекурсивные методы. Вычисление факториала</H4>
+    <FORM name="form1">
+        Введите натуральное число: <input type="text" size=20 name="num"><hr>
+        Значение факториала pавно: <input type="text" size=20 name="res"><hr>
+        <input type="button" value=Выполнить
+               onClick="this.form.res.value=fact(this.form.num.value)">
+        <input type="reset" value=Отменить>
+    </FORM>
+</BODY>
+</HTML>

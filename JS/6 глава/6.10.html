@@ -1,0 +1,138 @@
+<html>
+<head>
+    <title>Таблицы, цвет фона всей таблицы и отдельной ячейки</title>
+    <script>
+        function rset(obj) {
+            d = document
+            d.getElementById("itab").bgcolor = "silver"
+            d.getElementById("itab1").bgcolor = "gray"
+            d.getElementById("itab2").bgcolor = "gray"
+            d.getElementById("itab3").bgcolor = "gray"
+            d.getElementById("itab4").bgcolor = "gray"
+            d.getElementById("itab").border = 1
+            d.getElementById("itab").cellspacing = 10
+            d.getElementById("itab").cellpadding = 20
+            obj.bor.value = 1
+            obj.cells.value = 10
+            obj.cellp.value = 20
+        }
+        function gr(obj, m) {
+            document.getElementById("itab").bgColor = ((obj.elements[5])[m]).text
+        }
+        function grcol(obj, m) {
+            document.getElementById("itab1").bgColor = ((obj.elements[6])[m]).text
+            document.getElementById("itab2").bgColor = ((obj.elements[6])[m]).text
+            document.getElementById("itab3").bgColor = ((obj.elements[6])[m]).text
+            document.getElementById("itab4").bgColor = ((obj.elements[6])[m]).text
+        }
+        function set(obj) {
+            document.getElementById("itab").border = Number(obj.bor.value)
+            document.getElementById("itab").cellSpacing = Number(obj.cells.value)
+            document.getElementById("itab").cellPadding = Number(obj.cellp.value)
+        }
+    </script>
+</head>
+<body id="doc">
+    <table border="2" bgcolor="#aabbaa">
+        <tr>
+            <td align="center"><b>Изменяемые параметры</b></td>
+            <td align="center"><b>Цвет фона всей таблицы и отдельной ячейки</b></td>
+        </tr>
+        <TR>
+            <TD valign=top>
+                &nbsp;Введите значения параметров
+                <FORM name="form1">
+                    &nbsp;<input type="text" size=8 name="bor" value=1>
+                    Толщина рамки<br>
+                    &nbsp;<input type="text" size=8 name="cells" value=10>
+                    Расстояние между ячейками<br>
+                    &nbsp;<input type="text" size=8 name="cellp" value=20>
+                    Поля внутри ячейки<br><br>
+                    <CENTER>
+                        <input type="button" value="Просмотр" onclick="set(form1)">
+                        <input type="reset" value="Обновить"
+                               onclick="rset(form1)"><br><br>
+                    </CENTER>
+                    <TABLE border=1 align=center bgcolor="aaaaaa">
+                        <TR><TD colspan=2 align=center>Цвет фона</TD></TR>
+                        <TR>
+                            <TD align=center>таблицы</TD>
+                            <TD align=center>ячейки</TD>
+                        </TR>
+                        <TR>
+                            <TD align=center valign=top>
+                                <select name=col size=1
+                                        onChange="gr(form1, form1.col.value)">
+                                    <option value=0>red</option>
+                                    <option value=1>green</option>
+                                    <option value=2>black</option>
+                                    <option value=3>maroon</option>
+                                    <option value=4>gray</option>
+                                    <option value=5>olive</option>
+                                    <option value=6>navy</option>
+                                    <option value=7>purple</option>
+                                    <option value=8>teal</option>
+                                    <option value=9>gray</option>
+                                    <option value=10 selected>silver</option>
+                                    <option value=1l>yellow</option>
+                                    <option value=12>blue</option>
+                                    <option value=13>fuchsia</option>
+                                    <option value=14>white</option>
+                                </select>
+                            </TD>
+                            <TD align=center valign=top>
+                                <select name=colcol Size=1
+                                        onChange="grcol(form1, form1.colcol.value)">
+                                    <option value=0>red</option>
+                                    <option value=1>green</option>
+                                    <option value=2>black</option>
+                                    <option value=3>maroon</option>
+                                    <option value=4 selected>gray</option>
+                                    <option value=5>olive</option>
+                                    <option value=6>navy</option>
+                                    <option value=7>purple</option>
+                                    <option value=8>teal</option>
+                                    <option value=9>gray</option>
+                                    <option value=10>silver</option>
+                                    <option value=11>yellow</option>
+                                    <option value=12>blue</option>
+                                    <option value=13>fuchsia</option>
+                                    <option value=14>white</option>
+                                </select>
+                            </TD>
+                        </TR>
+                    </TABLE>
+                </FORM>            
+    </TD>
+    <TD>
+        <TABLE id="itab" border=1 cellspacing=10 cellpadding=20
+               bgcolor=silver align=center>
+            <TR>
+                <TD id="itab1" bgcolor=gray>
+                    <A href="h1.jpg">
+                        <IMG src="h1.jpg" border="0" width="150">
+                    </A>
+                </TD>
+                <TD id="itab2" bgcolor=gray>
+                    <A href="h2.jpg">
+                        <IMG src="h2.jpg" border="0" width="150">
+                    </A>
+                </TD>
+            </TR>
+            <TR>
+                <TD id="itab3" bgcolor=gray>
+                    <A href="h3.jpg">
+                        <IMG src="h3.jpg" border="0" width="150">
+                    </A>
+                </TD>
+                <TD id="itab4" bgcolor=gray>
+                    <A href="h4.jpg">
+                        <IMG src="h4.jpg" border="0" width="150">
+                    </A>
+                </TD>
+            </TR>
+        </TABLE>
+    </TD></TR>
+    </table>
+</body>
+</html>

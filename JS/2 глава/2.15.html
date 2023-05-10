@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title> task 2.15</title>
+    <script language="JavaScript">
+
+    function daynum(obj)
+    {
+    var m = obj.num1.value
+    d=document
+    var s
+    switch(m)
+    { case 'mon': s=1; break;
+    case 'tue': s=2; break;
+    case 'wed': s=3; break;
+    case 'thu': s=4; break;
+    case 'fri': s=5; break;
+    case 'sat': s=6; break;
+    case 'sun': s=7; break;
+    default: s='error';
+    }
+    obj.res.value=s
+    }
+
+
+    </script>
+</head>
+<body>
+
+<form name="form1">
+    enter day name <input type="text" size="7" name="num1">
+    <hr>
+    day number
+    <input type="button" value="calculate" onclick="daynum(form1)">
+    <input type="text" name="res" size="20">
+    <hr>
+    <input type="reset">
+
+</form>
+
+
+</body>
+</html>

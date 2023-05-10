@@ -1,0 +1,62 @@
+<HTML>
+<HEAD>
+    <TITLE>Исчерпывающий перебор. Hахождение формул вида а?b?c=d</TITLE>
+    <script>
+        function formula(obj) {
+            var a = obj.data1.value
+            var b = obj.data2.value
+            var c = obj.data3.value
+            var d = obj.data4.value
+            var sres = ""
+            var s
+            var s1
+            var s2
+            var r
+            var p = false
+            for (var i = 1; i <= 4; i++) {
+                s1 = a
+                switch (i) {
+                    case 1: s1 += "+"; break
+                    case 2: s1 += "-"; break
+                    case 3: s1 += "*"; break
+                    case 4: s1 += "%"; break
+                }
+                s1 += b
+                for (var j = 1; j <= 4; j++) {
+                    s2 = ""
+                    switch (j) {
+                        case 1: s2 += "+"; break
+                        case 2: s2 += "-"; break
+                        case 3: s2 += "*"; break
+                        case 4: s2 += "%"; break
+                    }
+                    s2 += c
+                    s = s1 + s2
+                    r = eval(s)
+                    if (r == d) {
+                        sres += s + "=" + d + "\r\n"
+                        p = true
+                    }
+                }
+            }
+            if (p)
+                obj.result.value = sres
+            else
+                obj.result.value = "Формулы, удовлетворяющие условию, не найдены"
+        }
+    </script>
+</HEAD>
+<BODY>
+    <H4>Hахождение формул вида <I>a</I>?<I>b</I>?<I>c</I>=<I>d</I></H4>
+    <FORM name="form1">
+        a: <input type="text" size=20 name="data1"><br />
+        b: <input type="text" size=20 name="data2"><br />
+        c: <input type="text" size=20 name="data3"><br />
+        d: <input type="text" size=20 name="data4"><br />
+        Найденные формулы:
+        <textarea cols=30 rows=5 name="result"></textarea><HR>
+        <input type="button" value=Определить onClick="formula(form1)">
+        <input type="reset" value=Отменить>
+    </FORM>
+</BODY>
+</HTML>

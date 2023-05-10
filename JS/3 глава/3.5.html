@@ -1,0 +1,111 @@
+<html>
+<head>
+    <title>Анкета "Нагрузка преподавателя"</title>
+    <script>
+        function graph(obj) {
+            var k1 = 0
+            var l = obj.lec.value
+            var p = obj.pract.value
+            var s = obj.stud.value
+            var tableHeight = 150
+            var knTime = 0
+            var eTime = 0
+            var krTime = 0
+            var zTime = 0
+            var d = document
+            if (s == "") alert("Введите количество студентов")
+            if ((l != "") && (l != "0")) {
+                knTime = Math.round(l * 10 / 100)
+                eTime = Math.round(s * 30 / 60)
+            }
+            if ((p != "") && (p != "0")) {
+                krTime = Math.round(s * 15 / 60)
+                zTime = Math.round(s * 20 / 60)
+            }
+            var sTime = knTime + eTime + krTime + zTime
+            k1 = tableHeight / sTime
+            d.images[0].height = Math.round(krTime * k1)
+            d.images[0].alt = krTime + "часов"
+            d.images[1].height = Math.round(zTime * k1)
+            d.images[1].alt = zTime + "часов"
+            d.images[2].height = Math.round(knTime * k1)
+            d.images[2].alt = knTime + "часов"
+            d.images[3].height = Math.round(eTime * k1)
+            d.images[3].alt = eTime + "часов"
+            d.images[4].height = Math.round(sTime * k1)
+            d.images[4].alt = sTime + "часов"
+        }
+        function CheckValHours(hours) {
+            if (hours < 0) alert ("Количество часов меньше нуля")
+        }
+        function CheckValNum(num) {
+            if (num <= 0) alert("Недопустимое значение меньше или равно нуля")
+        }
+    </script>
+</head>
+<body>
+    <center>
+        <h3>Анкета "Нагрузка преподавателя"</h3>
+        <small>Заполните поля и нажмите кнопку вычислить, 
+            чтобы увидеть диаграмму <b>Вычислить</b></small>
+        <form name="data">
+            <table bgcolor="#ffffff" width="300" cellpadding="2"
+                   cellspacing="2" border="1">
+                <tr>
+                    <td align="left"><b>Лекции</b><small>(часов)</small></td>
+                    <td align="left">
+                        <input type="text" name="lec" size="5"
+                               value="" onchange="CheckValHours(this.value)" />
+                    </td>
+                </tr>
+                <tr>
+                    <td align="left"><b>Практика</b><small>(часов)</small></td>
+                    <td align="left">
+                        <input type="text" name="pract" size="5"
+                               value="" onchange="CheckValHours(this.value)" />
+                    </td>
+                </tr>
+                <tr>
+                    <td align="left"><b>Число студентов</b><small>(человек)</small></td>
+                    <td align="left">
+                        <input type="text" name="stud" size="5"
+                               value="" onchange="CheckValNum(this.value)" />
+                    </td>
+                </tr>
+                <tr align="center">
+                    <td colspan="2" bgcolor="#ffffff">
+                        <input type="button" value="вычислить" onclick="graph(data)" />
+                    </td>
+                </tr>
+            </table>
+        </form>
+        <h4>Диаграмма нагрузки по вычисленным полям</h4>
+        <table height="190" cellpadding="0" cellspacing="1" border="0">
+            <tr  align="center">
+                <td bgcolor="#ffffff" height="150" style="vertical-align: bottom">
+                    <img src="1x1.jpg" width="75" height="0" border="0" />
+                </td>
+                <td bgcolor="#ffffff" height="150" style="vertical-align: bottom">
+                    <img src="1x1.jpg" width="75" height="0" border="0" />
+                </td>
+                <td bgcolor="#ffffff" height="150" style="vertical-align: bottom">
+                    <img src="1x1.jpg" width="75" height="0" border="0" />
+                </td>
+                <td bgcolor="#ffffff" height="150" style="vertical-align: bottom">
+                    <img src="1x1.jpg" width="75" height="0" border="0" />
+                </td>
+                <td bgcolor="#ffffff" height="150" style="vertical-align: bottom">
+                    <img src="1x1.jpg" width="75" height="0" border="0" />
+                </td>
+            </tr>
+            <tr width="100">
+                <td height="40" valing="top" align="center"><small>Контрольная</small></td>
+                <td height="40" valing="top" align="center"><small>Зачет</small></td>
+                <td height="40" valing="top" align="center"><small>Консультация</small></td>
+                <td height="40" valing="top" align="center"><small>Экзамен</small></td>
+                <td height="40" valing="top" align="center"><small>Всего</small></td>
+            </tr>
+        </table>
+    </center>
+</body>
+</html>

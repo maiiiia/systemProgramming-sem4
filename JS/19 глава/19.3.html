@@ -1,0 +1,133 @@
+<HTML>
+    <HEAD>
+        <TITLE>Календарь событий</TITLE>
+    </HEAD>
+    <BODY bgcolor="#F8F8FF" text="#000000">
+        <CENTER>
+            <script>
+                var cToday = "bgcolor='#BBEEFF'"
+                var cEmpty = "bgcolor='#00CCFF'"
+                var cDay = "bgcolor='#00CCFF'"
+                var cCap = "bgcolor= '#FFA0A0'"
+                var cTABLE = "bgcolor='D0D0D0'"
+                var HolidayDay
+                var HolidayMonth
+                var HolidayName
+                var Left
+                var Congrate
+                var today = new Date()
+                var Mon = today.getMonth() + 1
+                var Day = today.getDate()
+                var currDay = today.getDate()
+                var currMonth = today.getMonth()
+                var currYear = today.getFullYear()
+                var i
+                function array(m0, m1, m2, m3, m4, m5, m6, m7, m8, m9, m10, m11) {
+                    this[0] = m0; this[1] = m1; this[2] = m2; this[3] = m3;
+                    this[4] = m4; this[5] = m5; this[6] = m6; this[7] = m7;
+                    this[8] = m8; this[9] = m9; this[10] = m10; this[11] = m11;
+                }
+                var monames = new array("Январь", "Февраль", "Март", "Апрель", "Май",
+                    "Июнь", "Июль", "Август", "Сентябрь",
+                    "Октябрь", "Ноябрь", "Декабрь")
+                var days = new array(31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31);
+                function rDay(ptoday) {
+                    var vDay = ptoday.getDay();
+                    vDay = vDay - 1;
+                    if (vDay == -1) vDay = 6
+                    return vDay
+                }
+                function GetHol() {
+                    var HolMonth = new Array(1, 1, 2, 3, 4, 5, 5, 6, 6, 9, 11, 12);
+                    var HolDays = new Array(7, 13, 23, 8, 1, 1, 9, 1, 12, 1, 7, 31);
+                    var HolNames = new Array("Рождества", "Старого Нового Года",
+                        "23 Февраля",
+                        "8 Марта", "1 Апреля - Дня Смеха",
+                        "1 Мая - Праздника Весны и Труда",
+                        "9 Мая - Дня Победы",
+                        "1 Июня - Дня Защиты Детей",
+                        "12 Июня - Дня Независимости",
+                        "1 Сентября - Дня Знаний",
+                        "7 Ноября - Дня Примирения",
+                        "Нового Года");
+                    var HolNow = new Array(" с Рождеством! ",
+                        " с праздником <br>Старого Нового Года! ",
+                        " защитников Отечества <br>с праздником 23 Февраля!",
+                        " женщин <br>с праздником 8 Марта!",
+                        " с 1 Апреля <br> - Днем Смеха!",
+                        "c 1 Мая <br> - Праздником Весны и Труда!",
+                        " с 9 Мая <br> - Днем Победы!",
+                        " c 1 Июня <br> - Днем Защиты Детей!",
+                        " с 12 Июня <br> - Днем Независимости России! ",
+                        " учащихся с 1 Сентября <br> - Днем Знаний! ",
+                        " с 7 Ноября <br> - Днем Примирения!",
+                        " с Новым Годом! ");
+                    for (i = 0; i <= HolMonth.length; i++) {
+                        if (Mon <= HolMonth[i]) {
+                            if (Mon == HolMonth[i]) {
+                                if (Day <= HolDays[i]) {
+                                    HolidayDay = HolDays[i]
+                                    HolidayMonth = HolMonth[i]
+                                    HolidayName = HolNames[i]
+                                    Congrate = HolNow[i]
+                                    Left = HolidayDay - Day
+                                    break;
+                                }
+                            }
+                            else {
+                                HolidayDay = HolDays[i]
+                                HolidayMonth = HolMonth[i]
+                                HolidayName = HolNames[i]
+                                Congrate = HolNow[i]
+                                var HolDate = new Date(today.getFullYear(), HolidayMonth - 1, HolidayDay)
+                                Left = Math.round((HolDate.getTime() - today.getTime()) / (24000 * 3600))
+                                break;
+                            }
+                        }
+                    }
+                    if (Left == 0)
+                        document.write("<h3><I>Поздравляем всех " + Congrate + "</I></h3>")
+                    else
+                        document.write("<h3><I>До " + HolidayName + "<br> осталось дней: " +
+                            Left + " !</I></h3>")
+                }
+                function showCalendar(Month, Year) {
+                    document.write("<B><I>" + monames[Month] + " " + Year + "</B><I>")
+                    firstDay = new Date(Year, Month, 1)
+                    startDay = rDay(firstDay)
+                    if (((Year % 4 == 0) && (Year % 100 != 0)) || (Year % 400 == 0))
+                        days[1] = 29
+                    else
+                        days[1] = 28
+                    document.write("<TABLE " + cTABLE +
+                        "  Cellspacing = 1 CellPadding = 1 Border = 1 > ");
+                    document.write("<TR" + cCap + "><th>Пн</th><th>Bт</th><th>Cp</th>" +
+                        "<th>Чт</th><th>Пт</th><th>C6</th><th>Bc</th></TR>")
+                    document.write("<TR align=Right>");
+                    var column = 0
+                    for (i = 0; i < startDay; i++) {
+                        document.write("<TD ", cEmpty, ">&nbsp</TD>");
+                        column++;
+                    }
+                    for (i = 1; i <= days[Month]; i++) {
+                        if ((i == currDay) && (Month == currMonth) && (Year == currYear)) {
+                            document.write("<TD ", cToday, ">", i, "</TD>")
+                        }
+                        else {
+                            document.write("<TD ", cDay, ">", "<b>" + i + "</B>", "</TD>")
+                        }
+                        column++;
+                        if (column == 7) {
+                            document.write("</TR><TR align=Right>");
+                            column = 0;
+                        }
+                    }
+                    document.write("</TR></TABLE>");
+                }
+                GetHol();
+                showCalendar(today.getMonth(), today.getFullYear());
+            </script>
+            В календарь занесены основные праздники и поздравления к ним
+        </CENTER>
+    </BODY>
+    </HTML>

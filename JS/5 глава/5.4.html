@@ -1,0 +1,33 @@
+<html>
+<head>
+    <title>Данные из формы типа checkbox. Переводчики</title>
+    <script>
+        function grant() {
+            var d = document
+            var k = 0
+            if (d.getElementById("1").checked) k += Number(d.getElementById("1").value) 
+            if (d.getElementById("2").checked) k += Number(d.getElementById("2").value)
+            if (d.getElementById("3").checked) k += Number(d.getElementById("3").value)
+            if (d.getElementById("4").checked) k += Number(d.getElementById("4").value)
+            if (d.getElementById("5").checked) k += Number(d.getElementById("5").value)
+            if (d.getElementById("6").checked) k += Number(d.getElementById("6").value)
+            form1.res.value = "Вам полагается вознаграждение " + k + " у. е."
+        }
+    </script>
+</head>
+<body>
+    <h3>Анкета для переводчиков</h3>
+    <h4>Укажите те языки, которыми Вы владеете в совершенстве:</h4> <br />
+    <form name="form1">
+        <input type="checkbox" name="lan" value="100" id="1" />русский<br />
+        <input type="checkbox" name="lan" value="200" id="2" />английский<br />
+        <input type="checkbox" name="lan" value="300" id="3" />французский<br />
+        <input type="checkbox" name="lan" value="400" id="4" />немецкий<br />
+        <input type="checkbox" name="lan" value="500" id="5" />китайский<br />
+        <input type="checkbox" name="lan" value="600" id="6" />японский<br />
+        <input type="button" value="Вознаграждение" onclick="grant()" />
+        <input type="text" size="45" name="res" /><hr />
+        <input type="reset" value="Отменить" />
+    </form>
+</body>
+</html>

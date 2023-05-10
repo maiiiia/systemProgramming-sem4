@@ -1,0 +1,156 @@
+<HTML>
+<HEAD>
+    <script>
+        var iday = new Array("воскресенье", "понедельник", "вторник", "среда",
+            "четверг", "п€тница", "суббота")
+        function rasp(obj) {
+            var d = new Date(obj.begy.value, obj.begm.value, obj.begd.value)
+            var w = new Date(obj.endy.value, obj.endm.value, obj.endd.value)
+            var t = new Date(obj.begy.value, obj.begm.value, obj.begd.value)
+            var s = ""
+            var n = Number(obj.dt.value)
+            var nn = Number(obj.numst.value)
+            var k = d.getDate() + Number(n) - Number(d.getDay())
+            if (n < d.getDay())
+                k += 7
+            t.setDate(k)
+            var s1 = "<h4 align=center>¬едомость проведени€ зан€тий</h4>"
+            s1 += "<p>дисциплина<i><b> " + obj.predmet.value + "</b></i></p>"
+            s1 += "<p><i>номер группы </i><b> " + obj.numgr.value + "</b></p>"
+            s1 += "<i>день зан€тий " + "<b>" + iday[Number(n)] + "</b></i>"
+            var sHEAD = "<TABLE align=center border=3 bgcolor='#FFFFCC'" +
+                " cellpadding=3 cellspacing=0>" + "<TR><th>номер</th><th>фамили€</th>"
+            document.write(sHEAD)
+            var scur
+            var s = s1
+            var num = 0
+            while (t.getYear() <= w.getYear()) {
+                var mon = t.getMonth() + 1
+                var temp = ((mon < 10) ? ".0" : ".") + mon
+                scur = "<th>" + t.getDate() + temp + "</th>"
+                if (t.getYear() < w.getYear()) { s += scur; num += 1 }
+                else {
+                    if (t.getMonth() < w.getMonth()) { s += scur; num += 1 }
+                    else {
+                        if (t.getMonth() == w.getMonth()) {
+                            if (t.getDate() < w.getDate()) { s += scur; num += 1 }
+                            else {
+                                if (t.getDate() == w.getDate()) { s += scur; num += 1; break }
+                            }
+                        }
+                    }
+                }
+                k = t.getDate() + 7
+                t.setDate(k)
+            }
+            if (s == s1)
+                alert("ѕроверьте даты начала и конца зан€тий")
+            else {
+                s += "<th>отметка о зачете</th></TR>"
+                var sn = ""
+                for (var i = 1; i <= nn; i++) {
+                    sn = "<TR><TD>" + i + "</TD>" + "<TD> &nbsp </TD>"
+                    for (var j = 1; j <= num + 1; j++) {
+                        sn += "<TD> &nbsp</TD>"
+                    }
+                    sn += "</TR>"
+                    s += sn
+                }
+                s += "</TABLE>"
+                document.write(s)
+                document.write("<p align=center>„исло зан€тий в семестpe " + num + "</p > ")
+            }
+        }
+    </script>
+</HEAD>
+<BODY>
+    <H4 align=center>‘ормирование расписани€ зан€тий</H4>
+    <FORM name="form1">
+        <TABLE border=3 align=center cellpadding=3 cellspacing=5>
+            <TR><th>Ќачало курсов</th><th> онец курсов</th></TR>
+            <TR>
+                <TD>
+                    число <input type="text" name="begd" size=10>
+                    мес€ц <select name="begm" Size=1>
+                        <option value=0>€нварь
+                        <option value=1>февраль
+                        <option value=2>март
+                        <option value=3>апрель
+                        <option value=4>май
+                        <option value=5>июнь
+                        <option value=6>июль
+                        <option value=7>август
+                        <option value=8>сент€брь
+                        <option value=9>окт€брь
+                        <option value=10>но€брь
+                        <option value=11>декабрь
+                    </select>
+                    год <input type="text" name="begy" size=10 value=2023>
+                </TD>
+                <TD>
+                    число <input type="text" name="endd" size=10>
+                    мес€ц <select name="endm" size=1>
+                        <option value=0>€нварь
+                        <option value=1>февраль
+                        <option value=2>март
+                        <option value=3>апрель
+                        <option value=4>май
+                        <option value=5>июнь
+                        <option value=6>июль
+                        <option value=7>август
+                        <option value=8>сент€брь
+                        <option value=9>окт€брь
+                        <option value=10>но€брь
+                        <option value=11>декабрь
+                    </select>
+                    год <input type="text" name="endy" size=10 value=2023>
+                </TD>
+            </TR>
+            <TR>
+                <TD>предмет</TD>
+                <TD align=right>
+                    <input type="text" name="predmet" size=14
+                           value=информатика>
+                </TD>
+            </TR>
+            <TR>
+                <TD>номер группы</TD>
+                <TD align=right>
+                    <input type="text" name="numgr" size=14
+                           value=222>
+                </TD>
+            </TR>
+            <TR>
+                <TD>число студентов</TD>
+                <TD align=right>
+                    <input type="text" name="numst" size=14
+                           value=5>
+                </TD>
+            </TR>
+            <TR>
+                <TD>день зан€тий</TD>
+                <TD align=right>
+                    <select name=dt size=1>
+                        <option value=0>воскресенье
+                        <option value=1 selected>понедельник
+                        <option value=2>вторник
+                        <option value=3>среда
+                        <option value=4>четверг
+                        <option value=5>п€тница
+                        <option value=6>суббота
+                    </select>
+                </TD>
+            </TR>
+            <TR>
+                <TD align=left>
+                    <input type="button" value="—формировать"
+                           onClick="rasp(form1)"><br>
+                </TD>
+                <TD align=right>
+                    <input type="reset" value=" ќтменить ">
+                </TD>
+            </TR>
+        </TABLE>
+    </FORM>
+</BODY>
+</HTML>

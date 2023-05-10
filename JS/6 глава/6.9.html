@@ -1,0 +1,64 @@
+<html>
+<head>
+    <title>Города и памятники</title>
+    <script>
+        var sum = 0
+        var q
+        var a
+        function eq() {
+            p = test.question.value
+            a = test.answer.value
+            if (a == q) sum += 1
+        }
+        function result() {
+            document.test.res.value = sum
+        }
+    </script>
+</head>
+<body>
+    <center>
+        <h4 align="center">Города и памятники</h4>
+        <form name="test">
+            <table border="3" align="center" cellpadding="5"
+                   cellspacing="6" bgcolor ="silver"
+                   <tr><th>Памятник</th><th>Находится в городе</th></tr>
+                   <tr>
+                       <td>
+                           <select name="question" size="7" onchange="q = test.question.value">
+                               <option value="mad">Музей Прадо</option>
+                               <option value="ber">Рейхстаг</option>
+                               <option value="mil">Оперный театр Ла Скала</option>
+                               <option value="ier">Стена Плача</option>
+                               <option value="mek">Священный камень Кааб</option>
+                               <option value="par">Триумфальная Арка</option>
+                               <option value="new">Статуя Свободы</option>
+                               <option value="lon">Тауэр</option>
+                               <option value="spb">Медный всадник</option>
+                               <option value="mos">Третьяковская галерея</option>
+                           </select>
+                       </td>
+                       <td>
+                           <select name="answer" size="7" onchange="eq()">
+                               <option value="spb">Санкт-Петербург</option>
+                               <option value="mos">Москва</option>
+                               <option value="mek">Мекка</option>
+                               <option value="ier">Иерусалим</option>
+                               <option value="mil">Милан</option>
+                               <option value="par">Париж</option>
+                               <option value="mad">Мадрид</option>
+                               <option value="lon">Лондон</option>
+                               <option value="ber">Берлин</option>
+                               <option value="new">Нью-Йорк</option>
+                           </select>
+                       </td>
+                   </tr>
+            </table>
+            <center><p>
+                <input type="button" value="Результат" onclick="result()" /><br />
+                Количество правильных ответов
+                <input type="text" name="res" size="5" /><p>
+                <input type="reset" value="Обновить" onclick="sum=0" />
+        </form>
+    </center>
+</body>
+</html>

@@ -1,0 +1,83 @@
+<HTML>
+<HEAD>
+    <TITLE>ќпределение года, мес€ца, числа, дн€ недели и времени</TITLE>
+    <script>
+        var d = document
+        var t = new Date()
+        function fyear(obj)
+        {
+            var year = t.getFullYear()
+            obj.fye.value = year
+        }
+        function fmon(obj) {
+            var s
+            var month = t.getMonth()
+            switch (month) {
+                case 0: s = "€нварь"; break;
+                case 1: s = "февраль"; break;
+                case 2: s = "март"; break;
+                case 3: s = "апрель"; break;
+                case 4: s = "май"; break;
+                case 5: s = "июнь"; break;
+                case 6: s = "июль"; break;
+                case 7: s = "август"; break;
+                case 8: s = "сент€брь"; break;
+                case 9: s = "окт€брь"; break;
+                case 10: s = "но€брь"; break;
+                case 11: s = "декабрь"; break;
+            }
+            obj.fm.value = s
+        }
+        function fdate(obj) {
+            var d = t.getDate()
+            obj.fdat.value = d
+        }
+        function fday(obj) {
+            var day = t.getDay()
+            var s
+            switch (day) {
+                case 0: s = "воскресенье"; break;
+                case 1: s = "понедельник"; break;
+                case 2: s = "вторник"; break;
+                case 3: s = "среда"; break;
+                case 4: s = "четверг"; break;
+                case 5: s = "п€тница"; break;
+                case 6: s = "суббота"; break;
+            }
+            obj.fd.value = s
+        }
+        function cl(obj) {
+            var h = t.getHours()
+            var m = t.getMinutes()
+            var s = t.getSeconds()
+            var res = + h
+            if (m < 10) res += ":0" + m
+            else res += ":" + m
+            if (s < 10) s += ":0" + s
+            else res += ":" + s
+            obj.clo.value = res
+        }
+        function aldate(obj) {
+            obj.aldat.value = t
+        }                        
+    </script>
+</HEAD>
+<BODY bgcolor="#FFFFCC">
+    <H4>ƒл€ получени€ информации нажмите соответствующую кнопку</H4>
+    <FORM name="form1">
+        <input type="button" value="√од" onClick="fyear(form1)">
+        <input type="text" size=20 name="fye"><br>
+        <input type="button" value=Mес€ц onClick="fmon(form1)">
+        <input type="text" size=20 name="fm"><br>
+        <input type="button" value=„исло onClick="fdate(form1)">
+        <input type="text" size=20 name="fdat"><br>
+        <input type="button" value="ƒень" onClick="fday(form1)">
+        <input type="text" size=20 name="fd"><br>
+        <input type="button" value=¬рем€ onClick="cl(form1)">
+        <input type="text" size=20 name="clo"><Hr>
+        <input type="button" value=ƒата onClick="aldate(form1)">
+        <input type="text" size=80 name="aldat"><HR>
+        <input type="reset" value=ќтменить>
+    </FORM>
+</BODY>
+</HTML>

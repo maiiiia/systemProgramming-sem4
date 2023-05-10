@@ -1,0 +1,50 @@
+<html>
+<head>
+    <title>Расположение изображения относительно строки</title>
+    <script>
+        function set(obj) {
+            var d = document
+            if (obj.elements[0].checked) d.all("itab").align = "left"
+            else if (obj.elements[1].checked) d.all("itab").align = "middle"
+            else if (obj.elements[2].checked) d.all("itab").align = "right"
+
+            if (obj.elements[3].checked) d.all("itab").style = "vertical-align: top"
+            else if (obj.elements[4].checked) d.all("itab").style = "vertical-align: middle"
+            else if (obj.elements[5].checked) d.all("itab").style = "vertical-align: bottom"
+        }
+        function rset() {
+            document.all("itab").align = "left"
+            document.all("itab").valign = "top"
+        }
+    </script>
+</head>
+<body>
+    <h3 align="center">Расположение текста или изображения внутри ячейки</h3>
+    Выберите значение параметров, который Вас интересует и нажмите кнопку <b>Просмотр</b>
+    <table border="2">
+        <tr>
+            <td><h4 align="center">Значения параметров выравнивания таблицы</h4></td>
+            <td align="center"><h4>Действия при выбранных значении параметров</h4></td>
+        </tr>
+        <tr>
+            <td>
+                <form name="form1">
+                    Горизонтальное выравнивание:<br />
+                    <input type="radio" name="al" value="0" />LEFT<br />
+                    <input type="radio" name="al" value="1" />MIDDLE<br />
+                    <input type="radio" name="al" value="2" />RIGHT<br />
+                    Вертикальное выравнивание:<br />
+                    <input type="radio" name="vl" value="3" />TOP<br />
+                    <input type="radio" name="vl" value="4" />MIDDLE<br />
+                    <input type="radio" name="vl" value="5" />BOTTOM<br />
+                    <form name="form1">
+            </td>
+            <td id="itab" bgcolor="yellow" height="160" style="vertical-align: top" align="left">
+                <img src="pic.jpg" border="2" height="120" />
+            </td>
+        </tr>
+    </table>
+    <input type="button" value="Просмотр" onclick="set(form1)" />
+    <input type="reset" value="Обновить" onclick="rset()"/><hr />
+</body>
+</html>

@@ -1,0 +1,60 @@
+<html>
+<HEAD>
+    <TITLE>Бинарный поиск. Таблица промежуточных значений</TITLE>
+    <script>
+        var a = new Array(3, 5, 7, 9, 11, 14, 25, 34, 44, 78)
+        var b = new Array(4, 6, 8, 10, 12, 20, 35, 56, 101)
+        function sl1(a, b) {
+            var m = a.length - 1
+            var n = b.length - 1
+            var p = m + n
+            var c = new Array(p)
+            var i = 0
+            var j = 0
+            var k = 0
+            while ((i <= m) && (j <= n)) {
+                if (a[i] <= b[j]) {
+                    c[k] = a[i]
+                    i++
+                }
+                else {
+                    c[k] = b[j]
+                    j++
+                }
+                k++
+            }
+            if (i > m) {
+                while (j <= n) {
+                    c[k] = b[j]
+                    k++
+                    j++
+                }
+            }
+            else {
+                while (i <= m) {
+                    c[k] = a[i]
+                    k++
+                    i++
+                }
+            }
+            document.form1.result.value = c
+            return c
+        }
+        function test(obj) {
+            obj.data1.value = a
+            obj.data2.value = b
+        }
+    </script>
+</HEAD>
+<BODY bgcolor=silver>
+    <H4>Реализация алгоритма бинарного поиска</H4>
+    <FORM name="form1">
+        Первый массив: <INPUT type="text" size=40 name="data1"><hr>
+        Второй массив: <INPUT type="text" size=40 name="data2"><hr>
+        Результат слияния: <INPUT type="text" size=80 name="result"><hr>
+        <input type="button" value=Определить
+               onClick="test (form1); form1.result.value=sl1(a, b)">
+        <input type="reset" value=Отменить>
+    </FORM>
+</BODY>
+</html>

@@ -1,0 +1,36 @@
+<HTML>
+<HEAD>
+    <TITLE>Построение таблицы значений функции</TITLE>
+    <script>
+        function valfunc(obj) {
+            var fs = obj.func.value
+            var m = Number(obj.left.value)
+            var n = Number(obj.rig.value)
+            var h = Number(obj.by.value)
+            var y
+            var x
+            var s = "x       f(x)" + "\r\n"
+            for (var i = m; i <= n; i = i + h) {
+                x = i
+                y = eval(fs)
+                s += x + "      " + y + "\r\n"
+            }
+            obj.res.value = s
+        }
+    </script>
+</HEAD>
+<BODY bgcolor="F8F8FF">
+    <H4>Построение таблицы значений функции</H4>
+    <FORM name="form1">
+        Введите функцию:<input type="text" size=20 name="func"><hr>
+        Введите левый конец интервала: <input type="text" size=8
+                                              name="left"><hr>
+        Введите правый конец интервала: <input type="text" size=8 name="rig"><hr>
+        Введите шаг изменения аpгумента: <input type="text" size=8 name="by"><hr>
+        <input type="button" value=Вычислить onClick="valfunc(form1)"><hr>
+        Таблица значений функции:
+        <textarea cols=40 rows=10 name="res"></textarea><hr>
+        <input type="reset" value=Отменить>
+    </FORM>
+</BODY>
+</HTML>

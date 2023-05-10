@@ -1,0 +1,29 @@
+<html>
+<head>
+    <title>Данные из формы типа переключатель. Событие Focus</title>
+    <script>
+        function test(obj) {
+            var s = "свойство value: " + obj.value + "\n\r" +
+                "свойство name: " + obj.name + "\n\r" +
+                "свойство type: " + obj.type
+            form1.elements[4].value = s
+        }
+    </script>
+</head>
+<body>
+    <form name="form1">
+        Выберите форму витража<hr />
+        <input type="radio" name="fv" value="прямоугольник"
+               onfocus="test(form1.elements[0])" />прямоугольник<br />
+        <input type="radio" name="fv" value="квадрат"
+               onfocus="test(form1.elements[1])" />квадрат<br />
+        <input type="radio" name="fv" value="круг"
+               onfocus="test(form1.elements[2])" />круг<br />
+        <input type="radio" name="fv" value="треугольник"
+               onfocus="test(form1.elements[3])" />треугольник<hr />
+        Тест:<br />
+        <textarea name="res" cols="55" rows="5"></textarea><br />
+        <input type="reset" value="Отменить" /><hr />
+    </form>
+</body>
+</html>

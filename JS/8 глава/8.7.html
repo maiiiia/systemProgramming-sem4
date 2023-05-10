@@ -1,0 +1,30 @@
+<HTML>
+<HEAD>
+    <TITLE>Решение уравнения методом итераций</TITLE>
+    <script>
+        function iter(obj) {
+            var t = obj.prib.value
+            var eps = obj.teps.value
+            var x = t
+            var y = Math.sin(x * x + 1)
+            while (Math.abs(y - x) >= eps) {
+                x = y
+                y = Math.sin(x * x + 1)
+            }
+            obj.result.value = y
+        }
+    </script>
+</HEAD>
+<BODY>
+    Решение уравнения sin(x*x+1)=0 методом итераций
+    <FORM name="form1">
+        Введите начальное приближение <input type="text" name="prib"
+                                             size="8"><br>
+        Введите требуемую точность    <input type="text" name="teps"
+                                            size="8"><br>
+        <input type="button" value="Найти корень" onClick="iter(form1)">
+        Корень уравнения <input type="text" name="result" size="18"><hr>
+        <input type="reset" value="Отменить">
+    </FORM>
+</BODY>
+</HTML>

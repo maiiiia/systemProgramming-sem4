@@ -1,0 +1,52 @@
+<HTML>
+<HEAD>
+    <TITLE>Метод деления отрезка пополам</TITLE>
+    <script>
+        function binroot(obj) {
+            var fs = obj.func.value
+            var a = Number(obj.left.value)
+            var b = Number(obj.right.value)
+            var eps = Number(obj.epsv.value)
+            var x = a
+            var fa = eval(fs)
+            x = b
+            var fb = eval(fs)
+            var fc
+            var c
+            if (fa * fb < 0) {
+                while (Math.abs(b - a) > 2 * eps) {
+                    c = (a + b) / 2
+                    x = c
+                    fc = eval(fs)
+                    if (fa * fc < 0) {
+                        b = c
+                        fb = fc
+                    }
+                    else {
+                        a = c
+                        fa = fc
+                    }
+                }
+                obj.res.value = (a + b) / 2 - 1
+                x = (a + b) / 2 - 1
+                var test = eval(fs)
+                obj.test.value = test
+            }
+            else document.write("на концах отрезка значения одного знака")
+        }
+    </script>
+</HEAD>
+<BODY bgcolor="F8F8FF">
+    <H4> Метод деления отрезка пополам</H4>
+    <FORM name="form0">
+        Введите функцию: <input type="text" size=30 name="func"><hr>
+        Введите левый конец отрезка: <input type="text" size=10 name="left"><hr>
+        Введите правый конец отрезка: <input type="text" size=10 name="right"><hr>
+        Задайте требуемую точность: <input type="text" size=10 name="epsv"><hr>
+        <input type="button" value=Вычислить onClick="binroot(form0)"><hr>
+        Корень уравнения равен: <input type="text" size=30 name="res"><hr>
+        Тест: <input type="text" size=30 name="test"><hr>
+        <input type="reset" value=Отменить>
+    </FORM>
+</BODY>
+</HTML>

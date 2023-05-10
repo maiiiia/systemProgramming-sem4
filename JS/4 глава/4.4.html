@@ -1,0 +1,28 @@
+<html>
+<head>
+    <title>Данные из формы типа "переключатель". Выделенный элемент</title>
+    <script>
+        function vid() {
+            var d = document
+            var k = 0
+            if ((d.form1.elements[0]).checked) k = (d.form1.elements[0]).value
+            else if ((d.form1.elements[1]).checked) k = (d.form1.elements[1]).value
+            else if ((d.form1.elements[2]).checked) k = (d.form1.elements[2]).value
+            else if ((d.form1.elements[3]).checked) k = (d.form1.elements[3]).value
+            d.form1.elements[6].value = k
+        }
+    </script>
+</head>
+<body>
+    <form name="form1">
+        Выберите форму витража<hr />
+        <input type="radio" name="fv" value="1" />прямоугольник<br />
+        <input type="radio" name="fv" value="2" />квадрат<br />
+        <input type="radio" name="fv" value="3" />круг<br />
+        <input type="radio" name="fv" value="4" />треугольник<hr />
+        <input type="button" value="Выполнить" onclick="vid()" />
+        <input type="reset" value="Отменить" /><hr />
+        Тест: <input type="text"name="res" />
+    </form>
+</body>
+</html>

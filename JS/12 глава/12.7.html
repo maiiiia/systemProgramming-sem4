@@ -1,0 +1,48 @@
+<HTML>
+<HEAD>
+    <TITLE>Проверка, является ли строка палиндромом</TITLE>
+    <script>
+        function pal(obj) {
+            var s = obj.data.value
+            var n = s.length - 1
+            var p1 = 0
+            var p2 = n
+            var c1 = s.charAt(0)
+            var c2 = s.charAt(n)
+            var p = true
+            var s1 = ""
+            while ((p1 < p2) && (p == true)) {
+                if (c1 == " ") {
+                    p1++
+                    c1 = s.charAt(p1)
+                }
+                else
+                    if (c2 == " ") {
+                        p2--
+                        c2 = s.charAt(p2)
+                    }
+                    else
+                        if (c1 == c2) {
+                            p1++
+                            c1 = s.charAt(p1)
+                            p2--
+                            c2 = s.charAt(p2)
+                        }
+                        else { p = false }
+            }
+            if (!p) s1 = "не является палиндромом"
+            else s1 = "является палиндромом"
+            obj.res.value = s1
+        }
+    </script>
+</HEAD>
+<BODY>
+    <H4>Является ли строка палиндромом?</H4>
+    <FORM name="form1">
+        Введите строку: <input type="text" name="data" size="50"><hr>
+        Результат :     <input type="text" name="res" size="30"><hr>
+        <input type="button" value="Определить" onClick="pal(form1)"><hr>
+        <input type="reset" value="Отменить">
+    </FORM>
+</BODY>
+</HTML>

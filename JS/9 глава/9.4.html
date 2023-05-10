@@ -1,0 +1,22 @@
+<HTML>
+<HEAD>
+    <TITLE>Вычисление n!</TITLE>
+    <script>
+        function fact2(n) {
+            var f = 1
+            for (var i = n; i >= 1; i--) { f = f * i }
+            return f
+        }
+    </script>
+</HEAD>
+<BODY>
+    <P> Итерационные методы. Вычисление факториала п!</P>
+    <FORM name="form1">
+        Введите натуральное: <input type="text" size=8 name="num">
+        Вычисленное значение: <input type="text" size=8 name="res"><hr>
+        <input type="button" value=Выполнить 
+               onClick="form1.res.value = fact2(form1.num.value)"><hr>
+        <input type="reset" value=Отменить>
+    </FORM>
+</BODY>
+</HTML>

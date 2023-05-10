@@ -1,0 +1,36 @@
+<html>
+<head>
+    <title>Данные об языках, представленные с помощью списка</title>
+    <script>
+        function testsel() {
+            var d = document
+            var s = 0
+            if (((d.forms["form1"].elements[0])[0]).selected) s+=100
+            if (((d.forms["form1"].elements[0])[1]).selected) s+=200
+            if (((d.forms["form1"].elements[0])[2]).selected) s+=300
+            if (((d.forms["form1"].elements[0])[3]).selected) s+=400
+            if (((d.forms["form1"].elements[0])[4]).selected) s+=500
+            if (((d.forms["form1"].elements[0])[5]).selected) s+=600
+            return s
+        }
+    </script>
+</head>
+<body>
+    <form name="form1">
+        <h4>Анкета переводчика</h4>
+        Выберите язык, которым вы владеете в совершенстве<br />
+        <select name="forma" size="4" multiple>
+            <option value="русский">русский</option>
+            <option value="английский">английский</option>
+            <option value="французский">французский</option>
+            <option value="немецкий">немецкий</option>
+            <option value="китайский">китайский</option>
+            <option value="японский">японский</option>
+        </select><p>
+        Вознаграждение:<input type="text" name="res" size="10" /><p>
+        <input type="button" value="Определить" 
+               onclick="form1.res.value = testsel()" />
+        <input type="reset" value="Отменить" />
+    </form>
+</body>
+</html>

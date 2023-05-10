@@ -1,0 +1,30 @@
+<HTML>
+<HEAD>
+    <TITLE>Количество заданных символов в тексте</TITLE>
+    <script>
+        function numsym(obj) {
+            var h = obj.data.value
+            var s = obj.textin.value
+            var res = 0
+            for (var i = 0; i <= s.length - 1; i++) {
+                ch = s.charAt(i)
+                if (ch == h) { res += 1 }
+            }
+            obj.result.value = res
+        }
+    </script>
+</HEAD>
+<BODY>
+    Количество заданных символов в тексте
+    <FORM name="form1">
+        Введите текст:<br>
+        <textarea name="textin" rows=4 cols=20></textarea><hr>
+        Введите символ: <input type="text" name="data" size="8"><hr>
+        <input type="button" value=" Определить"
+               onClick="numsym(form1)"><hr>
+        Количество символов в тексте:
+        <input type="text" name="result" size=8><hr>
+        <input type="reset" value="Отменить">
+    </FORM>
+</BODY>
+</HTML>

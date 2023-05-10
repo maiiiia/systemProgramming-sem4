@@ -1,0 +1,56 @@
+<HTML>
+<HEAD>
+    <script>
+        function NDays(r) {
+            var s = ""
+            switch (r) {
+                case 0: s = "воскресенье"; break;
+                case 1: s = "понедельник"; break;
+                case 2: s = "вторник"; break;
+                case 3: s = "среда"; break;
+                case 4: s = "четверr"; break;
+                case 5: s = "пятница"; break;
+                case 6: s = "суббота"; break;
+            }
+            return s
+        }
+        function NMonths(r) {
+            var s = ""
+            switch (r) {
+                case 0: s = "января"; break;
+                case 1: s = "февраля"; break;
+                case 2: s = "марта"; break;
+                case 3: s = "апреля"; break;
+                case 4: s = "мая"; break;
+                case 5: s = "июня"; break;
+                case 6: s = "июля"; break;
+                case 7: s = "августа"; break;
+                case 8: s = "сентября"; break;
+                case 9: s = "октября"; break;
+                case 10: s = "ноября"; break;
+                case 11: s = "декабря"; break;
+            }
+            return s
+        }
+        function DateTime() {
+            var now = new Date()
+            var str = "Вы посетили эту страницу<br><b>"
+            str += now.getDate() + " " + NMonths(now.getMonth()) + " " +
+                now.getFullYear() + "</b> года<br>"
+            str += "в <b>" + now.getHours() + ":" + now.getMinutes() + ":" +
+                now.getSeconds() + "</b><br>"
+            str += "Cегодня - <b>" + NDays(now.getDay()) + "</b>"
+            document.write(str)
+        }                      
+    </script>
+</HEAD>
+<BODY>
+    <H4 align=center>Пример использования функций определения
+                    даты и времени</H4>
+        <CENTER>
+            <script>
+                DateTime()
+            </script>
+        </CENTER>
+</BODY>
+</HTML>

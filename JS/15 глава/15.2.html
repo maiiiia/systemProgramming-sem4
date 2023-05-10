@@ -1,0 +1,27 @@
+<HTML>
+<HEAD>
+    <TITLE>Принадлежит ли точка определенной области</TITLE>
+    <script>
+        function valfunc(obj) {
+            var fs = obj.func.value
+            var x = Number(obj.x.value)
+            var y = Number(obj.y.value)
+            var z = eval(fs)
+            var s = "принадлежит области"
+            if (!z) s = "не " + s
+            obj.res.value = s
+        }
+    </script>
+</HEAD>
+<BODY bgcolor="F8F8FF">
+    <H4>Принадлежность точки выделенной области плоскости</H4>
+    <FORM name="form1">
+        Введите формулу, описывающую область: <input type="text" size=40 name="func"><hr>
+        Введите x: <input type="text" size=8 name="x"><hr>
+        Введите y: <input type="text" size=8 name="y"><hr>
+        <input type="button" value=Вычислить onClick="valfunc(form1)"><hr>
+        Точка с заданными координатами <input type="text" size=30 name="res"><hr>
+        <input type="reset" value=Отменить>
+    </FORM>
+</BODY>
+</HTML>

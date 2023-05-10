@@ -1,0 +1,54 @@
+<HTML>
+<HEAD>
+    <TITLE>Рекурсивные методы. Метод деления отрезка пополам</TITLE>
+    <script>
+        function fbin(a, b, eps) {
+            var fs = document.form1.func.value
+            var x = a
+            var fa = eval(fs)
+            x = b
+            var fb = eval(fs)
+            var fc
+            var c
+            var r
+            if (Math.abs(b - a) < eps) {
+                r = (a + b) / 2
+            }
+            else {
+                c = (a + b) / 2
+                x = c
+                fс = eval(fs)
+                if (fa * fc < 0) {
+                    r = fbin(a, c, eps)
+                }
+                else {
+                    r = fbin(c, b, eps)
+                }
+            }
+            return r
+        }
+        function ftest(obj) {
+            var fs = form1.func.value
+            var x = obj.res.value
+            var tes = eval(fs)
+            obj.test.value = tes
+        }
+    </script>
+</HEAD>
+<BODY>
+    <H4> Нахождение корня уравнения вида <i>f</i>(<i>x</i>) =0
+        методом деления отрезка пополам</H4>
+    <FORM name="form1">
+        Введите функцию: <input type="text" size=30 name="func"><hr>
+        Введите левую границу отрезка: <input type="text" size=10 name="l"><hr>
+        Введите правую границу отрезка: <input type="text" size=10 name="r"><hr>
+        Задайте требуемую точность:<input type="text" size=10 name="eps"><hr>
+        <input type="button" value=Вычислить
+               onClick="form1.res.value=fbin(1*form1.l.value,1*form1.r.value,1*form1.eps.value)"><hr>
+        Корень уравнения равен: <input type="text" size=30 name="res"><hr>
+        <input type="button" value="     Тест     " onClick="ftest(form1)"><hr>
+        Тест: <input type="text" size=30 name="test"><hr>
+        <input type="reset" value=Отменить>
+    </FORM>
+</BODY>
+</HTML>

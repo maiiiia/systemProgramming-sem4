@@ -1,0 +1,38 @@
+<HTML>
+<HEAD>
+    <script>
+        NMonths = new Array("января", "февраля", "марта", "апреля", "мая",
+            "июня", "июля", "августа", "сентября",
+            "октября", "ноября", "декабря")
+        NDays = new Array("воскресенье", "понедельник", "вторник", "среда",
+            "четверг", "пятница", "суббота")
+        function DateTime() {
+            var now = new Date()
+            var minute = now.getMinutes()
+            var second = now.getSeconds()
+            var hour = now.getHours()
+            var min = ((minute < 10) ? ":0" : ":") + minute
+            var sec = ((second < 10) ? ":0" : ":") + second
+            var str = "Вы посетили эту страницу<br>"
+            year = now.getFullYear() + " "
+            month = now.getMonth()
+            imonth = NMonths[month]
+            day = now.getDay()
+            iday = NDays[day]
+            str += now.getDate() + " " + imonth + " " + year + " года<br>"
+            str += "в " + hour + min + sec + "<br>"
+            str += "Сегодня - " + iday
+            document.write(str)
+        }
+    </script>
+</HEAD>
+<BODY>
+    <H4 align=center> Пример использования функций
+                     определения времени</H4>
+        <CENTER>
+            <script>
+                DateTime()
+            </script>
+        </CENTER>
+</BODY>
+</HTML>

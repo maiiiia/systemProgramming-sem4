@@ -1,0 +1,46 @@
+<html>
+<head>
+    <title>Движение вдоль ломаной</title>
+    <script>
+        function movepoint(obj) {
+            var a = Number(obj.num1.value)
+            var b = a % 5
+            var c = a - b
+            var d = c / 5
+            var e = d
+            var f = 2 * d
+            if (a > 0) {
+                switch (b) {
+                    case 1: f += f; break
+                    case 2: f += f; e++; break
+                    case 3: f++; e += 2; break
+                    case 4: f += 2; e += 2; break
+                }
+            }
+            else {
+                switch (b) {
+                    case -1: e++; break
+                    case -2: f--; e++; break
+                    case -3: f--; break
+                    case -4: f--; e--; break
+                }
+            }
+            obj.x.value = e
+            obj.y.value = f
+        }
+    </script>
+</head>
+<body>
+    <h4 align ="center">Движение вдоль ломаной</h4>
+    <form name="form1">
+        <img src="graph.jpg" name="c1" border="2" /><br />
+        Точка начинает движение из начала координат<br />
+        Положительное число шагов - движение вверх<br />
+        Отрицательное число шагов - движение вниз<br />
+        Число шагов: <input type="text" size="7" name="num1" /><hr />
+        <input type="button" value="Вычислить" name="b1" onclick="movepoint(form1)" /><hr />
+        Координаты точки: x <input type="text" size="5" name="x" /> y <input type="text" size="5" name="y" /><br />
+        <input type="reset" value="Отменить"/>
+    </form>
+</body>
+</html>
